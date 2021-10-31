@@ -18,45 +18,6 @@ public:
         return os;
     }
 };
-
-class chat {
-    std::string nume_chat;
-    std::vector<utilizator> utilizatori;
-    //std::vector<mesaj> mesaje; // nu am terminat aici
-public:
-    friend std::ostream &operator<<(std::ostream &os, const chat &chat) {
-        os << "nume_chat: " << chat.nume_chat << " utilizatori: ";
-        for(const auto & utilizator : chat.utilizatori)
-            os << utilizator;
-        return os;
-    }
-
-public:
-    void adauga(utilizator user) {
-        utilizatori.push_back(user);
-    }
-
-    chat(const std::string &numeChat) : nume_chat(numeChat) {}
-
-    chat(const std::string &numeChat, const std::vector<utilizator> &utilizatori) : nume_chat(numeChat), utilizatori(utilizatori) {}
-
-    chat(const chat& copie) {
-        nume_chat = copie.nume_chat;
-        utilizatori = copie.utilizatori;
-    }
-
-    chat& operator=(const chat& copie) {
-        if(this != &copie) {
-            nume_chat = copie.nume_chat;
-            utilizatori = copie.utilizatori;
-        }
-        return *this;
-    }
-
-    ~chat() {
-        std::cout << "Destructor chat\n";
-    }
-};
 class reactie {
     std::string nume_reactie;
 public:
@@ -72,7 +33,7 @@ class mesaj {
     int data;
     int ora;
     std::string tip_mesaj;
-    std::vector<reactie>reactii;
+    std::vector<reactie> reactii;
 public:
     mesaj(const std::vector<utilizator> &autorMesaj, int data, int ora, const std::string &tipMesaj, const std::vector<reactie> &reactii) : autor_mesaj(autorMesaj), data(data), ora(ora), tip_mesaj(tipMesaj), reactii(reactii) {}
 
@@ -88,6 +49,49 @@ public:
 
     void adauga(reactie reaction) {
         reactii.push_back(reaction);
+    }
+};
+class chat {
+    std::string nume_chat;
+    std::vector<utilizator> utilizatori;
+    std::vector<mesaj> mesaje;
+public:
+    friend std::ostream &operator<<(std::ostream &os, const chat &chat) {
+        os << "nume_chat: " << chat.nume_chat << " utilizatori: ";
+        for(const auto & utilizator : chat.utilizatori)
+            os << utilizator;
+        os << " mesaje: ";
+        for(const auto & mesaj : chat.mesaje)
+            os << mesaj;
+        return os;
+    }
+
+public:
+    void adauga(utilizator user) {
+        utilizatori.push_back(user);
+    }
+
+    chat(const std::string &numeChat) : nume_chat(numeChat) {}
+
+    chat(const std::string &numeChat, const std::vector<utilizator> &utilizatori, const std::vector<mesaj> &mesaje) : nume_chat(numeChat), utilizatori(utilizatori), mesaje(mesaje) {}
+
+    chat(const chat& copie) {
+        nume_chat = copie.nume_chat;
+        utilizatori = copie.utilizatori;
+        mesaje = copie.mesaje;
+    }
+
+    chat& operator=(const chat& copie) {
+        if(this != &copie) {
+            nume_chat = copie.nume_chat;
+            utilizatori = copie.utilizatori;
+            mesaje = copie.mesaje;
+        }
+        return *this;
+    }
+
+    ~chat() {
+        std::cout << "Destructor chat\n";
     }
 };
 class grup {
@@ -124,11 +128,12 @@ int main()
     reactie r1{"HaHa"};
     reactie r2{"Angry"};
     reactie r3{"Sad"};
-    mesaj m1{{l1}, 13, 3, {r1, r3}};
-
-    chat t1{"FMI 2020", {l1}};
-    chat t2{"CTI 26", {l3}};
-    chat t3{"Grupa 261", {l2}};
+    mesaj m1{{l1}, 13, 3, "Text", {r1, r3}};
+    mesaj m2{{l2}, 11, 2, "Imagine", {r1, r2}};
+    mesaj m3{{l3}, 10, 1, "Video", {r3}};
+    chat t1{"FMI 2020", {l1}, {m1}};
+    chat t2{"CTI 26", {l3}, {m2}};
+    chat t3{"Grupa 261", {l2}, {m3}};
     grup s("Studentii", {t1, t2, t3}, {l3}, {l1});
     std::cout << s;
     return 0;
