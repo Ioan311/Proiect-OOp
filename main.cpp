@@ -21,7 +21,31 @@ public:
 class reactie {
     std::string nume_reactie;
 public:
+    enum Reaction {
+        HAHA, ANGRY, SAD, HEART, WOW
+    };
     reactie(const std::string &numeReactie) : nume_reactie(numeReactie) {}
+
+    friend std::ostream &operator<<(std::ostream &os, const Reaction &reactie) {
+        switch (reactie) {
+            case HAHA:
+                os << "😆";
+                break;
+            case ANGRY:
+                os << "😠";
+                break;
+            case SAD:
+                os << "😢";
+                break;
+            case HEART:
+                os << "❤";
+                break;
+            case WOW:
+                os << "😲";
+                break;
+        }
+        return os;
+    }
 
     friend std::ostream &operator<<(std::ostream &os, const reactie &reactie) {
         os << "nume_reactie: " << reactie.nume_reactie << "\n";
@@ -47,7 +71,7 @@ public:
         return os;
     }
 
-    void adauga(reactie reaction) {
+    void adaugaReactie(reactie reaction) {
         reactii.push_back(reaction);
     }
 };
@@ -67,7 +91,7 @@ public:
     }
 
 public:
-    void adauga(utilizator user) {
+    void adaugaUtilizator(utilizator user) {
         utilizatori.push_back(user);
     }
 
@@ -114,7 +138,7 @@ public:
             os << utilizator;
         return os;
     }
-    void adauga(chat chat) {
+    void adaugaChat(chat chat) {
         chats.push_back(chat);
     }
 };
@@ -125,16 +149,30 @@ int main()
     utilizator l1{"Mihai", 21, "Bucuresti", "FMI"};
     utilizator l2{"Andrei", 28, "Constanta", "Universitatea Ovidius"};
     utilizator l3{"Ioan", 19, "Ploiesti", "CEVM"};
+
     reactie r1{"HaHa"};
     reactie r2{"Angry"};
     reactie r3{"Sad"};
+
     mesaj m1{{l1}, 13, 3, "Text", {r1, r3}};
     mesaj m2{{l2}, 11, 2, "Imagine", {r1, r2}};
     mesaj m3{{l3}, 10, 1, "Video", {r3}};
+
+    m1.adaugaReactie(r1);
+    m2.adaugaReactie(r2);
+
     chat t1{"FMI 2020", {l1}, {m1}};
     chat t2{"CTI 26", {l3}, {m2}};
     chat t3{"Grupa 261", {l2}, {m3}};
+
+    t1.adaugaUtilizator(l1);
+    t3.adaugaUtilizator(l2);
+
     grup s("Studentii", {t1, t2, t3}, {l3}, {l1});
+
+    s.adaugaChat(t1);
+    s.adaugaChat(t3);
+
     std::cout << s;
     return 0;
 }
