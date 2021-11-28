@@ -2,7 +2,7 @@
 // Created by Ioan on 11/28/2021.
 //
 
-#include "mesaj.h"
+#include "../Headers/mesaj.h"
 
 mesaj::mesaj(const std::vector<utilizator> &autorMesaj, int data, int ora, const std::string &tipMesaj,
              const std::vector<reactie> &reactii) : autor_mesaj(autorMesaj), data(data), ora(ora), tip_mesaj(tipMesaj), reactii(reactii) {}

@@ -4,11 +4,11 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "utilizator.h"
-#include "reactie.h"
-#include "mesaj.h"
-#include "chat.h"
-#include "grup.h"
+#include "Headers/utilizator.h"
+#include "Headers/reactie.h"
+#include "Headers/mesaj.h"
+#include "Headers/chat.h"
+#include "Headers/grup.h"
 
 int main()
 {

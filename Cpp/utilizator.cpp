@@ -2,7 +2,7 @@
 // Created by Ioan on 11/27/2021.
 //
 
-#include "utilizator.h"
+#include "../Headers/utilizator.h"
 
 
 utilizator::utilizator(const std::string &nume, int varsta, const std::string &locatie, const std::string &studii) : nume(nume), varsta(varsta), locatie(locatie),studii(studii) {}

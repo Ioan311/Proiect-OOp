@@ -2,7 +2,7 @@
 // Created by Ioan on 11/28/2021.
 //
 
-#include "reactie.h"
+#include "../Headers/reactie.h"
 
 enum Reaction {
    HAHA, ANGRY, SAD, HEART, WOW

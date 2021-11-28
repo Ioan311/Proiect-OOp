@@ -2,7 +2,7 @@
 // Created by Ioan on 11/28/2021.
 //
 
-#include "chat.h"
+#include "../Headers/chat.h"
 
 std::ostream &operator<<(std::ostream &os, const chat &chat) {
     os << "nume_chat: " << chat.nume_chat << " utilizatori: ";

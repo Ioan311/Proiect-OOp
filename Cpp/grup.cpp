@@ -2,7 +2,7 @@
 // Created by Ioan on 11/28/2021.
 //
 
-#include "grup.h"
+#include "../Headers/grup.h"
 
 grup::grup(const std::string &numeGrup, const std::vector<chat> &chats, const std::vector<utilizator> &admin,
            const std::vector<utilizator> &moderatori) : nume_grup(numeGrup), chats(chats), admin(admin), moderatori(moderatori) {}
