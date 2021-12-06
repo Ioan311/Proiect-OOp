@@ -4,31 +4,29 @@
 
 #include "../Headers/reactie.h"
 
-enum Reaction {
-   HAHA, ANGRY, SAD, HEART, WOW
-};
-std::ostream &operator<<(std::ostream &os, const reactie::Reaction &reactie) {
+
+std::ostream &operator<<(std::ostream &os, const Reaction &reactie) {
     switch (reactie) {
-        case HAHA:
+        case Reaction::HAHA:
             os << "😆";
             break;
-        case ANGRY:
+        case Reaction::ANGRY:
             os << "😠";
             break;
-        case SAD:
+        case Reaction::SAD:
             os << "😢";
             break;
-        case HEART:
+        case Reaction::HEART:
             os << "❤";
             break;
-        case WOW:
+        case Reaction::WOW:
             os << "😲";
             break;
     }
     return os;
 }
 
-reactie::reactie(reactie::Reaction reactie) : reactie_(reactie) {}
+reactie::reactie(const Reaction reactie) : reactie_(reactie) {}
 
 std::ostream &operator<<(std::ostream &os, const reactie &reactie) {
     os << "reactie_: " << reactie.reactie_ << "\n";

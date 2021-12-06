@@ -9,6 +9,7 @@
 #include "Headers/mesaj.h"
 #include "Headers/chat.h"
 #include "Headers/grup.h"
+#include "postare.h"
 
 int main()
 {
@@ -16,24 +17,34 @@ int main()
     utilizator l2{"Andrei", 28, "Constanta", "Universitatea Ovidius"};
     utilizator l3{"Ioan", 19, "Ploiesti", "CEVM"};
 
-    reactie r1{reactie::HAHA};
-    reactie r2{reactie::ANGRY};
-    reactie r3{reactie::SAD};
+    reactie r1{Reaction::HAHA};
+    reactie r2{Reaction::ANGRY};
+    reactie r3{Reaction::SAD};
 
-
+    //New
+    postare p1{{l1}, 10, 12, {r1}};
+    p1.send();
     mesaj m1{{l1}, 13, 3, "Text", {r1, r3}};
+    m1.send();
+
+
     mesaj m2{{l2}, 11, 2, "Imagine", {r1, r2}};
     mesaj m3{{l3}, 10, 1, "Video", {r3}};
 
     m1.adauga(r1);
     m2.adauga(r2);
 
-    chat t1{"FMI 2020", {l1}, {m1}};
-    chat t2{"CTI 26", {l3}, {m2}};
-    chat t3{"Grupa 261", {l2}, {m3}};
+    chat t1{"FMI 2020", {l1}, {std::make_shared<mesaj> (m1)}};
+    t1.adauga(p1); // object slicing...
+    t1.send();
 
-    t1.adaugaUtilizator(l1);
-    t3.adaugaUtilizator(l2);
+    chat t2{"CTI 26", {l3}, {std::make_shared<mesaj> (m2)}};
+    chat t3{"Grupa 261", {l2}, {std::make_shared<mesaj> (m3)}};
+
+    t1.adauga(l1);
+    t3.adauga(l2);
+
+    t1.adauga(m3);
 
     grup s("Studentii", {t1, t2, t3}, {l3}, {l1});
 

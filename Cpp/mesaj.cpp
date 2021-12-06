@@ -20,3 +20,18 @@ std::ostream &operator<<(std::ostream &os, const mesaj &mesaj) {
 void mesaj::adauga(const reactie &reaction) {
     reactii.push_back(reaction);
 }
+
+void mesaj::send() const {
+    std::cout << "mesaj send\n";
+    for(int i = 0; i < ora; ++i)
+        std::cout << '\a';
+
+}
+
+mesaj::~mesaj() {
+    std::cout << "Destructor mesaj\n";
+}
+
+std::shared_ptr<mesaj> mesaj::clone() const {
+    return std::make_shared<mesaj>(*this);
+}

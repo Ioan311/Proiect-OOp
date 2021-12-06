@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <vector>
+#include <memory>
 #include "utilizator.h"
 #include "reactie.h"
 
@@ -22,6 +23,10 @@ public:
     friend std::ostream &operator<<(std::ostream &os, const mesaj &mesaj);
 
     void adauga(const reactie &reaction);
+
+    virtual void send() const;
+    virtual std::shared_ptr<mesaj> clone() const;
+    virtual ~mesaj();
 };
 
 #endif //PROIECT_OOP_MESAJ_H

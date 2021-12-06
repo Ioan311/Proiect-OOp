@@ -4,4 +4,4 @@ project(Proiect_OOp)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(Proiect_OOp
-        main.cpp Cpp/utilizator.cpp Headers/utilizator.h Cpp/reactie.cpp Headers/reactie.h Cpp/mesaj.cpp Headers/mesaj.h Cpp/chat.cpp Headers/chat.h Cpp/grup.cpp Headers/grup.h)
+        main.cpp Cpp/utilizator.cpp Headers/utilizator.h Cpp/reactie.cpp Headers/reactie.h Cpp/mesaj.cpp Headers/mesaj.h Cpp/chat.cpp Headers/chat.h Cpp/grup.cpp Headers/grup.h postare.cpp postare.h)

@@ -7,13 +7,17 @@
 
 #include <iostream>
 
+
+enum class Reaction {
+    HAHA, ANGRY, SAD, HEART, WOW
+};
+
+std::ostream &operator<<(std::ostream &os, const Reaction &reactie);
+
 class reactie {
 public:
-    enum Reaction {
-        HAHA, ANGRY, SAD, HEART, WOW
-    };
 
-    friend std::ostream &operator<<(std::ostream &os, const Reaction &reactie);
+
 private:
     int nr = 1;
     Reaction reactie_;
