@@ -24,7 +24,8 @@ public:
     chat(const std::string &numeChat);
     chat(const std::string &numeChat, const std::vector<utilizator> &utilizatori, const std::vector<std::shared_ptr<mesaj>> &mesaje);
     chat(const chat& copie);
-    chat& operator=(const chat& copie);
+    chat& operator=(chat copie);
+    friend void swap(chat& c1, chat& c2);
     ~chat();
 
     void send();

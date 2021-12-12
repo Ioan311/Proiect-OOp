@@ -32,15 +32,8 @@ chat::chat(const chat &copie) : nume_chat(copie.nume_chat) {
         mesaje.push_back(mesaj->clone());
 }
 
-chat &chat::operator=(const chat &copie) {
-    if(this != &copie) {
-        auto mesaje_noi = std::vector <std::shared_ptr <mesaj>>();
-        for(const auto &mesaj : copie.mesaje) {
-            mesaje_noi.push_back(mesaj->clone());
-        }
-        mesaje = mesaje_noi;
-        nume_chat = copie.nume_chat;
-    }
+chat &chat::operator=(chat copie) {
+    swap(*this, copie);
     return *this;
 }
 
@@ -53,6 +46,13 @@ void chat::send() {
         mesaj->send();
     }
 
+}
+
+void swap(chat &c1, chat &c2) {
+    using std::swap;
+    swap(c1.nume_chat, c2.nume_chat);
+    swap(c1.utilizatori, c2.utilizatori);
+    swap(c1.mesaje, c2.mesaje);
 }
 
 

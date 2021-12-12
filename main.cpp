@@ -21,8 +21,11 @@ int main()
     reactie r2{Reaction::ANGRY};
     reactie r3{Reaction::SAD};
 
+    std::cout << mesaj::getIdMax() << "\n";
+
     //New
     postare p1{{l1}, 10, 12, {r1}};
+    std::cout << mesaj::getIdMax() << "\n";
     p1.send();
     mesaj m1{{l1}, 13, 3, "Text", {r1, r3}};
     m1.send();
@@ -52,5 +55,6 @@ int main()
     s.adauga(t3);
 
     std::cout << s;
+    std::cout << mesaj::getIdMax() << "\n";
     return 0;
 }

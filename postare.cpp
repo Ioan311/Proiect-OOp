@@ -21,3 +21,8 @@ postare::~postare() {
 std::shared_ptr<mesaj> postare::clone() const {
     return std::make_shared<postare>(*this);
 }
+
+void postare::afisare(std::ostream &os) const {
+    os << "nr: " << nr << ", ";
+    mesaj::afisare(os);
+}
