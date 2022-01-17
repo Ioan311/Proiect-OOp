@@ -38,7 +38,7 @@ int main()
     m2.adauga(r2);
 
     chat t1{"FMI 2020", {l1}, {std::make_shared<mesaj> (m1)}};
-    t1.adauga(p1); // object slicing...
+    t1.adauga(p1);
     t1.send();
 
     chat t2{"CTI 26", {l3}, {std::make_shared<mesaj> (m2)}};
