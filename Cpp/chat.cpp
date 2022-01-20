@@ -14,7 +14,7 @@ std::ostream &operator<<(std::ostream &os, const chat &chat) {
     return os;
 }
 
-void chat::adauga(const utilizator &user) {
+void chat::adauga(const utilizator<int> &user) {
     utilizatori.push_back(user);
 }
 
@@ -24,7 +24,7 @@ void chat::adauga(const mesaj &mesaj_) {
 
 chat::chat(const std::string &numeChat) : nume_chat(numeChat) {}
 
-chat::chat(const std::string &numeChat, const std::vector<utilizator> &utilizatori, const std::vector<std::shared_ptr<mesaj>> &mesaje) : nume_chat(numeChat), utilizatori(utilizatori), mesaje(mesaje) {}
+chat::chat(const std::string &numeChat, const std::vector<utilizator<int>> &utilizatori, const std::vector<std::shared_ptr<mesaj>> &mesaje) : nume_chat(numeChat), utilizatori(utilizatori), mesaje(mesaje) {}
 
 
 chat::chat(const chat &copie) : nume_chat(copie.nume_chat) {

@@ -13,16 +13,16 @@
 
 class chat {
     std::string nume_chat;
-    std::vector<utilizator> utilizatori;
+    std::vector<utilizator<int>> utilizatori;
     std::vector<std::shared_ptr<mesaj>> mesaje;
 public:
     friend std::ostream &operator<<(std::ostream &os, const chat &chat);
 
 public:
-    void adauga(const utilizator &user);
+    void adauga(const utilizator<int> &user);
     void adauga(const mesaj &mesaj);
     chat(const std::string &numeChat);
-    chat(const std::string &numeChat, const std::vector<utilizator> &utilizatori, const std::vector<std::shared_ptr<mesaj>> &mesaje);
+    chat(const std::string &numeChat, const std::vector<utilizator<int>> &utilizatori, const std::vector<std::shared_ptr<mesaj>> &mesaje);
     chat(const chat& copie);
     chat& operator=(chat copie);
     friend void swap(chat& c1, chat& c2);

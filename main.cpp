@@ -9,13 +9,14 @@
 #include "Headers/mesaj.h"
 #include "Headers/chat.h"
 #include "Headers/grup.h"
-#include "postare.h"
+#include "Headers/postare.h"
+#include "Headers/data_invalida.h"
 
 int main()
 {
-    utilizator l1{"Mihai", 21, "Bucuresti", "FMI"};
-    utilizator l2{"Andrei", 28, "Constanta", "Universitatea Ovidius"};
-    utilizator l3{"Ioan", 19, "Ploiesti", "CEVM"};
+    utilizator<int> l1{"Mihai", 21, "Bucuresti", "FMI"};
+    utilizator<int> l2{"Andrei", 28, "Constanta", "Universitatea Ovidius"};
+    utilizator<int> l3{"Ioan", 19, "Ploiesti", "CEVM"};
 
     reactie r1{Reaction::HAHA};
     reactie r2{Reaction::ANGRY};
@@ -53,6 +54,16 @@ int main()
 
     s.adauga(t1);
     s.adauga(t3);
+    try{
+        mesaj m4{{l1}, 32, 25, "Text", {r1}};
+    }catch (data_invalida& error) {
+        std::cout << error.what() << "\n";
+    }
+    try{
+        utilizator<int> l4{"Paul", 15, "Timisoara", "Scoala Gimnaziala Nr. 30"};
+    }catch(varsta_invalid& error) {
+        std::cout << error.what() << "\n";
+    }
 
     std::cout << s;
     std::cout << mesaj::getIdMax() << "\n";

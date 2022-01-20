@@ -13,10 +13,10 @@
 class grup {
     std::string nume_grup;
     std::vector<chat> chats;
-    std::vector<utilizator> admin;
-    std::vector<utilizator> moderatori;
+    std::vector<utilizator<int>> admin;
+    std::vector<utilizator<int>> moderatori;
 public:
-    grup(const std::string &numeGrup, const std::vector<chat> &chats, const std::vector<utilizator> &admin, const std::vector<utilizator> &moderatori);
+    grup(const std::string &numeGrup, const std::vector<chat> &chats, const std::vector<utilizator<int>> &admin, const std::vector<utilizator<int>> &moderatori);
 
     friend std::ostream &operator<<(std::ostream &os, const grup &grup);
     void adauga(const chat &chat);

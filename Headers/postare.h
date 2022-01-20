@@ -6,7 +6,7 @@
 #define PROIECT_OOP_POSTARE_H
 
 #include <ostream>
-#include "Headers/mesaj.h"
+#include "mesaj.h"
 enum class Style {
     bold = 1,
     italic = 2,
@@ -18,7 +18,7 @@ class postare : public mesaj {
     int nr = 2;
     Style s;
 public:
-    postare(const std::vector<utilizator> &autorMesaj, int data, int ora,
+    postare(const std::vector<utilizator<int>> &autorMesaj, int data, int ora,
             const std::vector<reactie> &reactii);
     //postare(Style postare);
     void send() const;
