@@ -5,7 +5,7 @@
 #ifndef PROIECT_OOP_POSTARE_H
 #define PROIECT_OOP_POSTARE_H
 
-#include <ostream>
+#include <iostream>
 #include "mesaj.h"
 enum class Style {
     bold = 1,

@@ -11,6 +11,8 @@
 #include "Headers/grup.h"
 #include "Headers/postare.h"
 #include "Headers/data_invalida.h"
+#include "Headers/Story.h"
+#include "Headers/Profile.h"
 
 int main()
 {
@@ -64,7 +66,14 @@ int main()
     }catch(varsta_invalid& error) {
         std::cout << error.what() << "\n";
     }
-
+    CreateMine myStory;
+    myStory.NewStory("Tap to view");
+    myStory.NewStory("Tap to view");
+    myStory.ReportStory();
+    Profile* p = new Profile();
+    Frame* f = new Frame(p);
+    Decorate* d = new Decorate(f);
+    d->display();
     std::cout << s;
     std::cout << mesaj::getIdMax() << "\n";
     return 0;
