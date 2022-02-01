@@ -4,15 +4,15 @@
 
 #include "../Headers/Story.h"
 
-Story::Story(char *newName) {
-    strcpy(nume, newName);
+Story::Story(const std::string &newName) {
+    std::string nume = newName;
 }
 
-const char *Story::getNume() const {
+const std::string &Story::getNume() const {
     return nume;
 }
 
-MyStory::MyStory(char *newName) : Story(newName){}
+MyStory::MyStory(const std::string &newName) : Story(newName){}
 
 void MyStory::Deschis() {
     std::cout << "MyStory: Deschis()" << "\n";
@@ -28,7 +28,7 @@ Create::Create() : index(0) {
 
 void Create::DeschideStory() {}
 
-void Create::NewStory(char *name) {
+void Create::NewStory(const std::string &name) {
     std::cout << "Create: NewStory()" << "\n";
     sry[index] = CreateStory(name);
     sry[index++]->Deschis();
@@ -44,7 +44,8 @@ CreateMine::CreateMine() {
     std::cout << "CreateMine: StoryTime" << "\n";
 }
 
-Story *CreateMine::CreateStory(char *newName) {
+MyStory CreateMine::CreateStory(const std::string &newName) {
     std::cout << "CreateMine: CreateStory()" << "\n";
-    return new MyStory(newName);
+    return  MyStory(newName);
 }
+

@@ -14,7 +14,6 @@ std::ostream &operator<<(std::ostream &os, const utilizator<T> &utilizator) {
 }
 template <typename T>
 void utilizator<T>::exist(T u){
-    u = 18;
     if(varsta > u) // u este varsta minima
         std::cout << "Avem utilizator " << "\n";
     else
@@ -25,4 +24,7 @@ template class utilizator<int>;
 template class utilizator<unsigned int>;
 template
 std::ostream& operator<< <>(std::ostream& o, const utilizator<int>& x);
+template
+std::ostream& operator<< <>(std::ostream& o, const utilizator<unsigned int>& x);
+
 

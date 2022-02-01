@@ -18,7 +18,7 @@ class postare : public mesaj {
     int nr = 2;
     Style s;
 public:
-    postare(const std::vector<utilizator<int>> &autorMesaj, int data, int ora,
+    postare(const std::vector<utilizator<unsigned int>> &autorMesaj, int data, int ora,
             const std::vector<reactie> &reactii);
     //postare(Style postare);
     void send() const;
@@ -28,9 +28,9 @@ protected:
     void afisare(std::ostream &os) const override;
     void afisare(std::ostream &os, const postare &postare) const;
 };
-template <typename T>
+/*template <typename T>
 using enableStd = typename std::enable_if<
         std::is_same<T, Style>::value,
         std::ostream &>::type;
-
+*/
 #endif //PROIECT_OOP_POSTARE_H

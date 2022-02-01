@@ -7,38 +7,40 @@
 #include <iostream>
 #include <cstring>
 #include <vector>
+#include <memory>
 // Using Factory method
 class Story {
-    char nume[30];
+    std::string nume;
 public:
-    Story(char *newName);
+    Story(const std::string &newName);
     virtual void Deschis() = 0;
     virtual void Inchis() = 0;
-    const char *getNume() const;
+    const std::string &getNume() const;
 };
 
 
 class MyStory : public Story {
 public:
-    MyStory(char *newName);
+    MyStory(const std::string &newName);
     void Deschis();
     void Inchis();
 };
 
 class Create {
     int index;
-    Story *sry[10];
+    //Story *sry[10];
+    std::vector<std::shared_ptr<Story>> sry;
 public:
     Create();
-    void NewStory(char *name);
+    void NewStory(const std::string &name);
     void DeschideStory();
     void ReportStory();
-    virtual Story *CreateStory(char*) = 0;
+    virtual std::shared_ptr<Story> CreateStory(const std::string nume) = 0;
 };
 class CreateMine : public Create {
 public:
     CreateMine();
-    Story *CreateStory(char *newName);
+    std::shared_ptr<Story> CreateStory(const std::string &newName);
 };
 
 #endif //PROIECT_OOP_STORY_H

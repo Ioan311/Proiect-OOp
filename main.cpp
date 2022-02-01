@@ -16,9 +16,11 @@
 
 int main()
 {
-    utilizator<int> l1{"Mihai", 21, "Bucuresti", "FMI"};
-    utilizator<int> l2{"Andrei", 28, "Constanta", "Universitatea Ovidius"};
-    utilizator<int> l3{"Ioan", 19, "Ploiesti", "CEVM"};
+    utilizator<unsigned int> l1{"Mihai", 21, "Bucuresti", "FMI"};
+    utilizator<unsigned int> l2{"Andrei", 28, "Constanta", "Universitatea Ovidius"};
+    utilizator<unsigned int> l3{"Ioan", 19, "Ploiesti", "CEVM"};
+    utilizator<int> l4{"George", 32, "Iasi", "UMF"};
+    utilizator<int> l5{"Sorin", 22, "Cluj", "Babeș-Bolyai"};
 
     reactie r1{Reaction::HAHA};
     reactie r2{Reaction::ANGRY};
@@ -40,30 +42,28 @@ int main()
     m1.adauga(r1);
     m2.adauga(r2);
 
-    chat t1{"FMI 2020", {l1}, {std::make_shared<mesaj> (m1)}};
+    chat t1{"FMI 2020", {l5}, {std::make_shared<mesaj> (m1)}};
     t1.adauga(p1);
     t1.send();
 
-    chat t2{"CTI 26", {l3}, {std::make_shared<mesaj> (m2)}};
-    chat t3{"Grupa 261", {l2}, {std::make_shared<mesaj> (m3)}};
+    chat t2{"CTI 26", {l4}, {std::make_shared<mesaj> (m2)}};
+    chat t3{"Grupa 261", {l5}, {std::make_shared<mesaj> (m3)}};
 
-    t1.adauga(l1);
-    t3.adauga(l2);
+    t1.adauga(l4);
+    t3.adauga(l5);
 
     t1.adauga(m3);
 
-    grup s("Studentii", {t1, t2, t3}, {l3}, {l1});
+    grup s("Studentii", {t1, t2, t3}, {l4}, {l5});
 
     s.adauga(t1);
     s.adauga(t3);
     try{
-        mesaj m4{{l1}, 32, 25, "Text", {r1}};
-    }catch (data_invalida& error) {
-        std::cout << error.what() << "\n";
-    }
-    try{
         utilizator<int> l4{"Paul", 15, "Timisoara", "Scoala Gimnaziala Nr. 30"};
+        mesaj m4{{l1}, 32, 25, "Text", {r1}};
     }catch(varsta_invalid& error) {
+        std::cout << error.what() << "\n";
+    }catch (data_invalida& error) {
         std::cout << error.what() << "\n";
     }
     CreateMine myStory;

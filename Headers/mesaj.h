@@ -16,14 +16,14 @@ class mesaj {
     const int id;
     static int id_max;
 protected:
-    std::vector<utilizator<int>> autor_mesaj;
+    std::vector<utilizator<unsigned int>> autor_mesaj;
     int data;
     int ora;
     std::string tip_mesaj;
     std::vector<reactie> reactii;
     virtual void afisare(std::ostream& os) const;
 public:
-    mesaj(const std::vector<utilizator<int>> &autorMesaj, int data, int ora, const std::string &tipMesaj, const std::vector<reactie> &reactii);
+    mesaj(const std::vector<utilizator<unsigned int >> &autorMesaj, int data, int ora, const std::string &tipMesaj, const std::vector<reactie> &reactii);
     mesaj(const mesaj&);
 
     friend std::ostream &operator<<(std::ostream &os, const mesaj &mesaj);

@@ -7,7 +7,7 @@
 
 int mesaj::id_max = 1;
 
-mesaj::mesaj(const std::vector<utilizator<int>> &autorMesaj, int data, int ora, const std::string &tipMesaj, const std::vector<reactie> &reactii) : autor_mesaj(autorMesaj), data(data), ora(ora), tip_mesaj(tipMesaj), reactii(reactii),
+mesaj::mesaj(const std::vector<utilizator<unsigned int>> &autorMesaj, int data, int ora, const std::string &tipMesaj, const std::vector<reactie> &reactii) : autor_mesaj(autorMesaj), data(data), ora(ora), tip_mesaj(tipMesaj), reactii(reactii),
     id(id_max){
     id_max++;
     if (data > 31)
@@ -59,3 +59,5 @@ int mesaj::getIdMax() {
 }
 template class
 utilizator<int>;
+template class
+utilizator<unsigned int>;

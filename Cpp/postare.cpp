@@ -23,7 +23,7 @@ void postare::afisare(std::ostream &os, const postare &postare) const {
     mesaj::afisare(os);
 }
 
-postare::postare(const std::vector<utilizator<int>> &autorMesaj, int data, int ora,
+postare::postare(const std::vector<utilizator<unsigned int>> &autorMesaj, int data, int ora,
                  const std::vector<reactie> &reactii) : mesaj(autorMesaj, data, ora, "post", reactii) {}
 
 void postare::send() const {
