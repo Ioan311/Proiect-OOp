@@ -44,8 +44,8 @@ CreateMine::CreateMine() {
     std::cout << "CreateMine: StoryTime" << "\n";
 }
 
-MyStory CreateMine::CreateStory(const std::string &newName) {
+std::shared_ptr<Story> CreateMine::CreateStory(const std::string &newName) {
     std::cout << "CreateMine: CreateStory()" << "\n";
-    return  MyStory(newName);
+    return std::make_shared<MyStory> (newName);
 }
 

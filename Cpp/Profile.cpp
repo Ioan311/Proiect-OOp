@@ -8,31 +8,31 @@ void Profile::display() {
     std::cout << "Interface of my profile" << "\n";
 }
 
-Frame::Frame(Profile *f_) {
+Frame::Frame(const std::vector<std::shared_ptr<Profile>> &f_) {
     f = f_;
 }
 
 void Frame::display() {
-    f->display();
+    //f.display();
     std::cout << "Adding a frame" << "\n";
 }
 
-Decorate::Decorate(Frame *d_) {
+Decorate::Decorate(std::vector<std::shared_ptr<Frame>> &d_) {
     d = d_;
 }
 
 void Decorate::setColor() {
-    if(*border == Colors::Green)
+    if(border == Colors::Green)
         std::cout << "The border is green";
-    else if(*border == Colors::RED)
+    else if(border == Colors::RED)
         std::cout << "The border is red";
-    else if(*border == Colors::PINK)
+    else if(border == Colors::PINK)
         std::cout << "The border is pink";
-    else if(*border == Colors::BLUE)
+    else if(border == Colors::BLUE)
         std::cout << "The border is blue";
 }
 
 void Decorate::display() {
-    d->display();
+    //d->display();
     std::cout << "Decorating" << "\n";
 }

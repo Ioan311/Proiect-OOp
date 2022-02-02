@@ -5,6 +5,8 @@
 #ifndef PROIECT_OOP_PROFILE_H
 #define PROIECT_OOP_PROFILE_H
 #include <iostream>
+#include <memory>
+#include <vector>
 //Using Decorate method
 class Profile {
 public:
@@ -12,9 +14,9 @@ public:
 };
 
 class Frame : public Profile {
-    Profile* f;
+    std::vector<std::shared_ptr<Profile>>f;
 public:
-    Frame(Profile* f_);
+    Frame(const std::vector<std::shared_ptr<Profile>> &f_);
     void display();
 };
 enum class Colors{
@@ -24,10 +26,10 @@ enum class Colors{
     BLUE
 };
 class Decorate : public Profile {
-   Frame* d;
-   Colors* border;
+   std::vector<std::shared_ptr<Frame>> d;
+   Colors border;
 public:
-    Decorate(Frame* d_);
+    Decorate(std::vector<std::shared_ptr<Frame>> &d_);
     void setColor();
     void display();
 };

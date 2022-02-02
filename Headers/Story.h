@@ -9,6 +9,7 @@
 #include <vector>
 #include <memory>
 // Using Factory method
+
 class Story {
     std::string nume;
 public:
@@ -28,19 +29,18 @@ public:
 
 class Create {
     int index;
-    //Story *sry[10];
     std::vector<std::shared_ptr<Story>> sry;
 public:
     Create();
     void NewStory(const std::string &name);
     void DeschideStory();
     void ReportStory();
-    virtual std::shared_ptr<Story> CreateStory(const std::string nume) = 0;
+    virtual std::shared_ptr<Story> CreateStory(const std::string &nume) = 0;
 };
 class CreateMine : public Create {
 public:
     CreateMine();
-    std::shared_ptr<Story> CreateStory(const std::string &newName);
+    std::shared_ptr<Story> CreateStory(const std::string &nume);
 };
 
 #endif //PROIECT_OOP_STORY_H

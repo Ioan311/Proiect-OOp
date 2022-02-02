@@ -70,10 +70,10 @@ int main()
     myStory.NewStory("Tap to view");
     myStory.NewStory("Tap to view");
     myStory.ReportStory();
-    Profile* p = new Profile();
-    Frame* f = new Frame(p);
-    Decorate* d = new Decorate(f);
-    d->display();
+    Profile p;
+    Frame f();
+    Decorate d();
+    //d->display();
     std::cout << s;
     std::cout << mesaj::getIdMax() << "\n";
     return 0;
